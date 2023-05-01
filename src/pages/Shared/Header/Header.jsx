@@ -6,7 +6,7 @@ const Header = () => {
         <div>
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
                 <Container>
-                    <h2 className='fw-bold fs-2 text-warning'>Indian Taste</h2>
+                    <h2 className='fw-bold fs-2 text-warning'><i>Indian Taste</i></h2>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mx-auto">
@@ -16,7 +16,7 @@ const Header = () => {
                         <Nav>
                             <Nav.Link href="#deets" className='fw-bold fs-5'>Profile</Nav.Link>
                             <Nav.Link eventKey={2} href="#memes">
-                                <Button variant="warning" className='fw-bold '>Login</Button>
+                                <Button variant="warning" className='fw-bold text-white'>Login</Button>
                             </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
