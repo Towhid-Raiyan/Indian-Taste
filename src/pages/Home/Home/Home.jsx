@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Container } from 'react-bootstrap';
 import banner from '../../../assets/banner1.jpg'
+import Chefs from '../../Chefs/Chefs';
 
 const Home = () => {
     return (
@@ -16,6 +17,9 @@ const Home = () => {
                         <img src={banner} class="rounded-circle img-fluid" alt="" />
                     </div>
                 </div>
+            </Container>
+            <Container>
+                <Chefs></Chefs>
             </Container>
         </div>
     );
