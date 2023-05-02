@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Container } from 'react-bootstrap';
 import banner from '../../../assets/banner1.jpg'
 import Chefs from '../../Chefs/Chefs';
+import TopFood from '../../TopFood/TopFood';
 
 const Home = () => {
     return (
@@ -20,6 +21,7 @@ const Home = () => {
             </Container>
             <Container>
                 <Chefs></Chefs>
+                <TopFood></TopFood>
             </Container>
         </div>
     );

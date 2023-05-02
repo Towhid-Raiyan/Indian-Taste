@@ -13,7 +13,7 @@ const Chefs = () => {
     return (
         <div>
             <h2 className='text-center fs-1 fw-bolder mt-5 '>OUR EXPERT CHEFS</h2>
-            <h2 className='text-center fs-5  mb-5 text-warning'>... PROFESSIONAL COOK TEAM ...</h2>
+            <h2 className='text-center fs-5  mb-5 text-warning'>--- PROFESSIONAL COOK TEAM ---</h2>
             <div className='row row-cols-1 row-cols-md-3 g-4 my-5'>
                 {
                     chef.map(c => <ChefCard
