@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar, NavLink } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
 
@@ -14,9 +14,12 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mx-auto">
-                            <Link className=' ,fw-bold fs-5 text-decoration-none text-reset' to='/'>Home</Link>
-                            <Link className=' ,fw-bold fs-5 text-decoration-none text-reset' to='/blog'>Blog</Link>
+                            <Link className='mx-auto fw-bold fs-5 text-decoration-none text-reset px-4'  to='/'>Home</Link>
+                            <Link className=' mx-auto fw-bold fs-5 text-decoration-none text-reset'  to='/blog'>Blog</Link>
+
+                            <NavLink to="/" className={({ isActive }) => isActive ? "active" : "" } >home </NavLink>
                         </Nav>
+                        
                         <Nav>
                             {
                                 user && <Nav.Link href="#deets" className='fw-bold fs-5'>profile</Nav.Link>

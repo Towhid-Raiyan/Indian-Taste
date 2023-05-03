@@ -1,0 +1,5 @@
+.active {
+
+    @apply font-semibold tracking-wide text-red-500 transition-colors duration-200;
+
+}
