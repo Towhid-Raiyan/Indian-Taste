@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { FaHeart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const ChefCard = ({ c }) => {
     const { id, name, years_of_experience, chef_pic_url, likes, no_of_recipes } = c;
@@ -21,13 +22,15 @@ const ChefCard = ({ c }) => {
                             Total Number of Recipe: {no_of_recipes}
                         </Card.Text>
                         <Card.Text className='fw-bold fs-5 text-center'>
-                            <span className='text-danger'><FaHeart /></span> <span className='text-secondary'>{likes}</span>
+                            <span className='text-danger fs-4'><FaHeart /></span> <span className='text-secondary'>{likes}</span>
                         </Card.Text>
-                        
+
                     </Card.Body>
-                    <Button variant="warning text-white fw-bold m-2" size="lg">
-                        View Recipe
-                    </Button>
+                    <Link to={`/data/${id}`} className='m-2'>
+                        <Button variant="warning text-white fw-bold  w-100 " size="lg">
+                            View Recipe
+                        </Button>
+                    </Link>
                 </Card>
             </Col>
         </Row>
