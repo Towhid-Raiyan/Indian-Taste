@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar, Tooltip } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
+// import {Tooltip} from "react-tooltip";
 
 const Header = () => {
 
@@ -27,7 +28,7 @@ const Header = () => {
                         </Nav>
                         <div>
                             {
-                                user ? (<img src={photo} alt="" />) : (<span>x</span>)
+                                user ? (<img src={photo} alt="" id='photo' className='rounded-circle img-thumbnail'/>) : (<span>x</span>)
                             }
 
                             {
@@ -40,6 +41,10 @@ const Header = () => {
 
                         </div>
                     </Navbar.Collapse>
+                    <Tooltip
+                    anchorSelect='#photo' content={name}>
+                        
+                    </Tooltip>
                 </Container>
             </Navbar>
         </div>
