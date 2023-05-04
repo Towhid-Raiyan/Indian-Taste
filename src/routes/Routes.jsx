@@ -44,7 +44,7 @@ const router = createBrowserRouter([
             {
                 path: ':id',
                 element: <PrivateRoute><ChefDetails></ChefDetails></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/data/${params.id}`)
+                loader: ({params}) => fetch(`https://indian-taste-server-nr848clcx-towhid-raiyan.vercel.app/data/${params.id}`)
             }
         ]
     }

@@ -11,7 +11,8 @@ const auth = getAuth(app);
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    
+    const [photo,setPhoto]=useState(null);
+    const [name,setName]=useState(null);
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
@@ -33,6 +34,8 @@ const AuthProvider = ({children}) => {
             console.log('logged in user inside auth state observer', loggedUser)
             setUser(loggedUser);
             setLoading(false);
+            setPhoto(loggedUser?.photoURL);
+            setName(loggedUser?.displayName);
         })
 
         return () => {
@@ -45,7 +48,9 @@ const AuthProvider = ({children}) => {
         loading,
         createUser,
         signIn,
-        logOut
+        logOut,
+        name,
+        photo
     }
 
     return (

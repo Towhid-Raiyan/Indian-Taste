@@ -5,8 +5,8 @@ import { AuthContext } from '../../../Providers/AuthProvider';
 
 const Header = () => {
 
-    const { user, logOut } = useContext(AuthContext);
-    console.log(user?.photoURL);
+    const { user, logOut,photo,name } = useContext(AuthContext);
+    console.log(photo,name);
 
     const handleLogOut = () => {
         logOut()
@@ -25,9 +25,9 @@ const Header = () => {
                             <span className=' mx-auto fw-bold fs-5 text-decoration-none text-reset px-4'><NavLink to={'/blog'} className={({ isActive }) => isActive ? "text-warning" : ""} >Blog  </NavLink></span>
                             <span className=' mx-auto fw-bold fs-5 text-decoration-none text-reset'><NavLink to={'/about'} className={({ isActive }) => isActive ? "text-warning" : ""} >About  </NavLink></span>
                         </Nav>
-                        <Nav>
+                        <div>
                             {
-                                user && <div><img src={user?.email} alt="" /></div>
+                                user ? (<img src={photo} alt="" />) : (<span>x</span>)
                             }
 
                             {
@@ -38,7 +38,7 @@ const Header = () => {
                                     </Link>
                             }
 
-                        </Nav>
+                        </div>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
