@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link , useLocation, useNavigate} from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import app from '../../../firebase/firebase.config';
 
 const Login = () => {
@@ -14,12 +14,26 @@ const Login = () => {
     const from = location.state?.from?.pathname || '/';
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
+
+    const handleGitHubSignIn =() =>{
+        signInWithPopup(auth,githubProvider)
+        .then(result=>{
+            const user = result.user;
+            console.log(user);
+            navigate(from, { replace: true })
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+    }
 
     const handleGoogleSignIn = () =>{
         signInWithPopup(auth,provider)
         .then(result=>{
             const user = result.user;
             console.log(user);
+            navigate(from, { replace: true })
         })
         .catch(error =>{
             console.log(error);
@@ -62,14 +76,17 @@ const Login = () => {
                 <br />
                 <Button onClick={handleGoogleSignIn} variant="warning w-100 text-white fw-bold my-3">Sign In with Google</Button>
                 <br />
+                
+                <Button onClick={handleGitHubSignIn} variant="warning w-100 text-white fw-bold mb-3">Sign In with GitHub</Button>
+                <br />
                 <Form.Text className="text-secondary fw-bold">
                     Don't have an account ? <Link to='/register'>Register</Link>
                 </Form.Text>
                 <Form.Text className="text-success">
-                    We'll never share your email with anyone else.
+                    
                 </Form.Text>
                 <Form.Text className="text-danger">
-                    We'll never share your email with anyone else.
+                    
                 </Form.Text>
             </Form>
         </Container>
