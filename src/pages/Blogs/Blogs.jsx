@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
-import { Container } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
+import Pdf from "react-to-pdf";
+const ref = React.createRef();
 
 const Blogs = () => {
     return (
         <div>
             <Container>
+                <Pdf targetRef={ref} filename="blogs.pdf" scale={0.7}>
+                    {({ toPdf }) => <Button variant="warning" className='fw-bold text-white my-3 mx-3' onClick={toPdf}>Generate Pdf</Button>}
+                </Pdf>
+                <div ref={ref}>
                 <h1 className='fs-1 fw-bolder text-center my-5'>Blogs</h1>
                 <div className='border border-warning p-3 rounded m-3'>
                     <h4>1. Tell us the differences between uncontrolled and controlled components.</h4>
@@ -16,13 +22,13 @@ const Blogs = () => {
                 <div className='border border-warning p-3 rounded m-3'>
                     <h4>2. How to validate React props using PropTypes?</h4>
                     <p className='fw-semibold '>
-                    PropTypes is a built-in typechecking feature in React that allows us to validate the props passed to a component. To use PropTypes, we import it from the 'prop-types' package and define the expected type for each prop. 
+                        PropTypes is a built-in typechecking feature in React that allows us to validate the props passed to a component. To use PropTypes, we import it from the 'prop-types' package and define the expected type for each prop.
                     </p>
                 </div>
                 <div className='border border-warning p-3 rounded m-3'>
                     <h4>3. Tell us the difference between nodejs and express js ?</h4>
                     <p className='fw-semibold '>
-                    Node.js and Express.js are both JavaScript technologies that are often used for server-side web development.Node.js is a runtime environment that allows us to run JavaScript code outside of the browser. It provides the core features and APIs of the JavaScript language, such as the ability to create and manipulate objects, control flow, and perform I/O operations. Express.js, on the other hand, is a web framework that is built on top of Node.js. It provides additional features and abstractions that make it easier to build web applications, such as middleware for handling HTTP requests and responses, routing, and templating.
+                        Node.js and Express.js are both JavaScript technologies that are often used for server-side web development.Node.js is a runtime environment that allows us to run JavaScript code outside of the browser. It provides the core features and APIs of the JavaScript language, such as the ability to create and manipulate objects, control flow, and perform I/O operations. Express.js, on the other hand, is a web framework that is built on top of Node.js. It provides additional features and abstractions that make it easier to build web applications, such as middleware for handling HTTP requests and responses, routing, and templating.
                     </p>
                 </div>
                 <div className='border border-warning p-3 rounded m-3'>
@@ -32,6 +38,7 @@ const Blogs = () => {
 
                         Creating a custom hook is useful when we have a piece of stateful logic that we need to reuse across multiple components. For example, let's say we have a component that needs to fetch data from an API and display it. We can create a custom hook to handle the API call and data fetching logic, so we can reuse it across multiple components that need to fetch data from the same API.
                     </p>
+                </div>
                 </div>
             </Container>
 

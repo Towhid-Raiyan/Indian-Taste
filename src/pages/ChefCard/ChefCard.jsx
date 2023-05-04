@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { FaHeart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazy-load';
 
 const ChefCard = ({ c }) => {
     const { id, name, years_of_experience, chef_pic_url, likes, no_of_recipes } = c;
@@ -12,7 +13,9 @@ const ChefCard = ({ c }) => {
         <Row className='mb-4'>
             <Col>
                 <Card>
-                    <Card.Img variant="top" className='rounded img-fluid p-2' src={chef_pic_url} />
+                    <LazyLoad>
+                        <Card.Img variant="top" className='rounded img-fluid p-2' src={chef_pic_url} />
+                    </LazyLoad>
                     <Card.Body>
                         <Card.Title className='fw-bolder fs-2 text-center'>{name}</Card.Title>
                         <Card.Text className='fw-bold fs-5 text-secondary text-center'>
