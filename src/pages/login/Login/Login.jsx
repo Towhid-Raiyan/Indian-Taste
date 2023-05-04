@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link , useLocation, useNavigate} from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import app from '../../../firebase/firebase.config';
 
 const Login = () => {
 
@@ -10,7 +12,19 @@ const Login = () => {
     const location = useLocation();
     console.log('login page location', location)
     const from = location.state?.from?.pathname || '/';
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
 
+    const handleGoogleSignIn = () =>{
+        signInWithPopup(auth,provider)
+        .then(result=>{
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+    }
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
@@ -45,6 +59,8 @@ const Login = () => {
                 <Button variant="warning w-100 text-white fw-bold" type="submit">
                     Login
                 </Button>
+                <br />
+                <Button onClick={handleGoogleSignIn} variant="warning w-100 text-white fw-bold my-3">Sign In with Google</Button>
                 <br />
                 <Form.Text className="text-secondary fw-bold">
                     Don't have an account ? <Link to='/register'>Register</Link>

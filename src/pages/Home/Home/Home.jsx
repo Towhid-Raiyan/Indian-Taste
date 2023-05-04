@@ -12,7 +12,7 @@ const Home = () => {
                     <div className='my-auto'>
                         <h1 className=' fs-2 fw-bold text-secondary mb-5'>Welcome to Indian Taste !!!</h1>
                         <h1 className=' fs-1 fw-bolder text-warning mb-4'>We do not cook,<br /> We create your emotions!</h1>
-                        <Button variant="warning" className='fw-bold btn-lg text-white'>Login</Button>
+                        <Button variant="warning" className='fw-bold btn-lg text-white'>Make Reservation</Button>
                     </div>
                     <div>
                         <img src={banner} class="rounded-circle img-fluid" alt="" />
