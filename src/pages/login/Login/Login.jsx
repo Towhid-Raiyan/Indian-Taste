@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link , useLocation, useNavigate} from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
@@ -8,6 +8,7 @@ import app from '../../../firebase/firebase.config';
 const Login = () => {
 
     const { signIn } = useContext(AuthContext);
+    const [error,setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
     console.log('login page location', location)
@@ -50,10 +51,13 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                setError('');
                 navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error);
+                setError(error.message);
+
             })
     }
 
@@ -82,11 +86,8 @@ const Login = () => {
                 <Form.Text className="text-secondary fw-bold">
                     Don't have an account ? <Link to='/register'>Register</Link>
                 </Form.Text>
-                <Form.Text className="text-success">
-                    
-                </Form.Text>
-                <Form.Text className="text-danger">
-                    
+                <Form.Text className="text-danger fw-semibold">
+                    <p>{error}</p>
                 </Form.Text>
             </Form>
         </Container>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
@@ -6,9 +6,13 @@ import { AuthContext } from '../../../Providers/AuthProvider';
 const Registration = () => {
 
     const { createUser } = useContext(AuthContext);
+    const [error,setError] = useState('');
+    const [success, setSuccess] = useState('');
 
     const handleRegister = event => {
+        
         event.preventDefault();
+        setSuccess('');
         const form = event.target;
         const name = form.name.value;
         const photo = form.photo.value;
@@ -20,9 +24,14 @@ const Registration = () => {
             .then(result => {
                 const createdUser = result.user;
                 console.log(createdUser);
+                setError('');
+                setSuccess('User has created successfully');
+                event.target.reset();
             })
             .catch(error => {
-                console.log(error);
+                console.log(error.message);
+                setError(error.message);
+                
             })
     }
 
@@ -59,11 +68,11 @@ const Registration = () => {
                 <Form.Text className="text-secondary fw-bold">
                     Already have an account ? <Link to='/login'>Login</Link>
                 </Form.Text>
-                <Form.Text className="text-success">
-                    We'll never share your email with anyone else.
+                <Form.Text className="text-success fw-semibold">
+                    <p>{success}</p>
                 </Form.Text>
-                <Form.Text className="text-danger">
-                    We'll never share your email with anyone else.
+                <Form.Text className="text-danger fw-semibold">
+                    <p>{error}</p>
                 </Form.Text>
             </Form>
         </Container>
