@@ -6,7 +6,10 @@ import Row from 'react-bootstrap/Row';
 import { FaRegStar, FaStar, FaThumbsUp } from 'react-icons/fa';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 // import { Toast } from "react-bootstrap";
+// import { toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 import Swal from 'sweetalert2';
 
 const RecipeCard = ({ food }) => {
@@ -14,17 +17,28 @@ const RecipeCard = ({ food }) => {
     const { name, ingredients, cooking_method, ratings, meal_pic_url } = food;
     const ingri = { ingredients };
     const compo = ingri.ingredients;
-    const [isDisable,setIsDisable] = useState(false);
+    const [isDisable, setIsDisable] = useState(false);
+
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
+    // const handleButtonClick = () => {
+    //     setIsButtonDisabled(true);
+    //     toast.success('This food added as your Favourite!', {
+    //         onClose: () => {
+    //             setIsButtonDisabled(false);
+    //         }
+    //     });
+    // };
 
     const handleFavourite = () => {
         Swal.fire(
             'Good job!',
             'This item added to your Favourite!',
             'success'
-          )
-          setIsDisable(true);
+        )
+        setIsDisable(true);
     };
-   
+
     return (
         <div>
             <Row className='mb-4'>
@@ -52,16 +66,17 @@ const RecipeCard = ({ food }) => {
                             </Card.Text>
                         </Card.Body>
                         <Link className='m-2'>
-                            <Button variant="warning text-white fw-bold  w-100 " size="lg" onClick={handleFavourite} disabled={isDisable}>
+                            <Button variant="warning text-white fw-bold  w-100 " size="lg" onClick={handleFavourite} disabled={isDisable} >
                                 <span className='fs-5'>Favourite</span> <span className='fs-4'><FaThumbsUp /></span>
                             </Button>
                         </Link>
                     </Card>
                 </Col>
             </Row>
-
         </div>
     );
 };
 
 export default RecipeCard;
+
+

@@ -4,7 +4,6 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import 'react-tooltip/dist/react-tooltip.css'
 import {Tooltip} from "react-tooltip";
-// import { Tooltip as ReactTooltip } from 'react-tooltip'
 
 const Header = () => {
 
