@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
-import { Button, Container, Nav, Navbar, Tooltip } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
-// import {Tooltip} from "react-tooltip";
+import 'react-tooltip/dist/react-tooltip.css'
+import {Tooltip} from "react-tooltip";
+// import { Tooltip as ReactTooltip } from 'react-tooltip'
 
 const Header = () => {
 
-    const { user, logOut,photo,name } = useContext(AuthContext);
-    console.log(photo,name);
+    const { user, logOut, photo, name } = useContext(AuthContext);
+    console.log(photo, name);
 
     const handleLogOut = () => {
         logOut()
@@ -28,7 +30,7 @@ const Header = () => {
                         </Nav>
                         <div>
                             {
-                                user ? (<img src={photo} alt="" id='photo' className='rounded-circle img-thumbnail'/>) : (<span>x</span>)
+                                user ? (<img src={photo} alt="" id='photo' className='rounded-circle img-thumbnail img-fluid' />) : (<span>x</span>)
                             }
 
                             {
@@ -42,8 +44,8 @@ const Header = () => {
                         </div>
                     </Navbar.Collapse>
                     <Tooltip
-                    anchorSelect='#photo' content={name}>
-                        
+                        anchorSelect='#photo' content={name}>
+
                     </Tooltip>
                 </Container>
             </Navbar>
